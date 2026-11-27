@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "daccs"
+version = "0.1.0"
+description = "数据采集与计算校准系统 —— 双通道演示装置 V3.2 的测量与计算中枢"
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+license = { text = "Proprietary" }
+authors = [{ name = "项目开发方" }]
+
+dependencies = [
+    "pyserial>=3.5",
+    "numpy>=1.26",
+    "pandas>=2.1",
+    "scipy>=1.11",
+    "opencv-python>=4.8",
+    "PySide6>=6.5",
+    "openpyxl>=3.1",
+    "python-docx>=1.1",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+rs485 = ["pymodbus>=3.5"]
+i2c = ["smbus2>=1.5"]
+onewire = ["w1thermsensor>=1.4"]
+build = ["pyinstaller>=6.3"]
+
+[project.scripts]
+daccs = "daccs.app:main"
+
+[tool.setuptools.packages.find]
+include = ["daccs*"]
+
+[tool.setuptools.package-data]
+daccs = ["config/default.json"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
