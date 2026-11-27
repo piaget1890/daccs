@@ -100,9 +100,13 @@ CH340 驱动（`drivers/CH341SER.EXE`）。详见 `packaging/app.spec` 与 SRS �
 
 - 界面层为骨架：控件与信号已按 FR-6/FR-7 搭好，但未在真实硬件上做过联调；
 - SHT31 / AM2302 依赖 `smbus2` / `w1thermsensor`，需在目标机安装；
-- TC-7（拔插串口）、TC-8（干净 Windows 虚拟机）需要实机验证；
-- `.github/workflows/ci.yml` 因 GitHub App 权限范围限制未能写入仓库，
-  等价检查已以 `scripts/check_layering.sh` 提供，可自行接入 CI。
+- TC-7（拔插串口）、TC-8（干净 Windows 虚拟机）需要实机验证。
+
+> **关于 CI 工作流**：`.github/workflows/ci.yml` 未能随本次推送写入仓库——
+> 当前 GitHub App 授权只覆盖 Contents API 与 Git Data API 的普通文件写入，
+> 对 `.github/workflows/` 路径返回 403（工作流需要单独的 `workflows` 权限范围）。
+> 等价检查已以 `scripts/check_layering.sh`（+ `scripts/run_checks.sh`）提供，
+> 可自行用有权限的凭据补上工作流文件，或直接调用这两个脚本。
 
 ## 许可
 
