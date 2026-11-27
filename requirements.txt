@@ -1,0 +1,31 @@
+# 运行时依赖（SRS §8.2）
+#
+# 版本按 SRS §8.2 建议锁定；打包当日以 PyPI 稳定版为准，
+# 并在兼容矩阵中验证（SRS §8.2 备注）。
+#
+# Python: 3.11.x（SRS 附录 1：3.13 的科学计算库/PyInstaller 支持仍在跟进）
+
+# --- 核心必需 ---
+pyserial>=3.5          # 串口采集（SDS011 / RS485）
+numpy>=1.26            # 数值计算、百分位、最小二乘
+pandas>=2.1            # 数据表
+scipy>=1.11            # 统计与数值工具
+
+# --- 设备与算法 ---
+opencv-python>=4.8     # 视频读取与灰度提取
+pymodbus>=3.5          # 可选 RS485（可选：本项目自带 Modbus RTU 实现）
+
+# --- 界面 ---
+PySide6>=6.5           # 图形界面（或 PyQt5 5.15）
+
+# --- 导出 ---
+openpyxl>=3.1          # XLSX 导出
+python-docx>=1.1       # DOCX 报告
+matplotlib>=3.8        # 曲线 / 标定图（或 pyqtgraph）
+
+# --- 打包 ---
+pyinstaller>=6.3       # 打包
+
+# --- 可选硬件支持 ---
+# smbus2>=1.5          # SHT31 I2C（Linux / SBC）
+# w1thermsensor>=1.4   # AM2302 单总线
