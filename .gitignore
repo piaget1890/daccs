@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# 运行时产物（原始数据只追加，但不入库）
+data/
+logs/
+*.csv
+*.xlsx
+*.docx
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 打包
+packaging/build/
+packaging/dist/
