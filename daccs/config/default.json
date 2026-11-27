@@ -1,0 +1,117 @@
+{
+  "sensors": [
+    {
+      "kind": "sds011",
+      "name": "sds011_a",
+      "channel": "A",
+      "device_id": 1,
+      "serial": { "port": "COM3", "baudrate": 9600, "timeout": 0.2, "enabled": true }
+    },
+    {
+      "kind": "sds011",
+      "name": "sds011_b",
+      "channel": "B",
+      "device_id": 2,
+      "serial": { "port": "COM4", "baudrate": 9600, "timeout": 0.2, "enabled": true }
+    },
+    {
+      "kind": "sht31",
+      "name": "sht31_a",
+      "channel": "A",
+      "address": "0x44",
+      "serial": { "port": "", "baudrate": 9600, "timeout": 0.2, "enabled": true }
+    },
+    {
+      "kind": "sht31",
+      "name": "sht31_b",
+      "channel": "B",
+      "address": "0x45",
+      "serial": { "port": "", "baudrate": 9600, "timeout": 0.2, "enabled": true }
+    },
+    {
+      "kind": "rs485",
+      "name": "wind_sensor",
+      "channel": "A",
+      "quantity": "wind_speed",
+      "enabled": false,
+      "unit_id": 1,
+      "function_code": 3,
+      "register": 0,
+      "scale": 0.1,
+      "offset": 0.0,
+      "serial": { "port": "", "baudrate": 19200, "timeout": 0.5, "enabled": false }
+    },
+    {
+      "kind": "rs485",
+      "name": "dp_sensor",
+      "channel": "A",
+      "quantity": "dp",
+      "enabled": false,
+      "unit_id": 2,
+      "function_code": 3,
+      "register": 0,
+      "scale": 0.001,
+      "offset": 0.0,
+      "serial": { "port": "", "baudrate": 19200, "timeout": 0.5, "enabled": false }
+    }
+  ],
+  "video": {
+    "target": "",
+    "is_camera": false,
+    "camera_index": 0,
+    "fps": 30.0,
+    "enabled": false
+  },
+  "roi": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0,
+    "expand_factor": 2.0
+  },
+  "dark_baseline": {
+    "roi": 0.0,
+    "bg": 0.0,
+    "frames": 10
+  },
+  "thresholds": {
+    "sensor_divergence_pct": 10.0,
+    "rh_divergence_pct": 5.0,
+    "split_ratio": 1.05,
+    "groi_overflow": 255,
+    "min_groi_gbg_ratio": 12.0,
+    "r2_threshold": 0.95,
+    "sds011_rh_limit": 70.0
+  },
+  "calibration": {
+    "alpha": 0.0,
+    "beta": 0.0,
+    "r2": 0.0,
+    "threshold": 0.95,
+    "source_expid": "",
+    "updated_at": 0.0,
+    "valid": false
+  },
+  "storage": {
+    "base_dir": ".",
+    "raw_dir": "data/raw",
+    "report_dir": "data/report",
+    "log_dir": "logs",
+    "gray_dir": "data/raw",
+    "flush_interval_s": 1.0
+  },
+  "acquisition": {
+    "period_s": 1.0,
+    "align_tolerance_ms": 500.0,
+    "reconnect_initial_s": 0.5,
+    "reconnect_max_s": 5.0,
+    "reconnect_factor": 2.0,
+    "cfeed": 0.0
+  },
+  "gcard": {
+    "enabled": false,
+    "reference": null,
+    "sensitivity": 1.0
+  },
+  "uncertainty_note": "传感器壁面采样 ±10%~15%；灰度—浓度非线性，本软件计算结果不冒充标准方法结论。"
+}
