@@ -18,6 +18,9 @@ pip install -r requirements.txt
 # 跑测试（80 个单元测试，无需额外测试框架）
 python -m unittest discover -s tests -t . -v
 
+# 一次性跑：单元测试 + 分层依赖检查
+bash scripts/run_checks.sh
+
 # 启动界面（需要 PySide6；采集需要真实硬件）
 python -m daccs
 ```
@@ -97,7 +100,9 @@ CH340 驱动（`drivers/CH341SER.EXE`）。详见 `packaging/app.spec` 与 SRS �
 
 - 界面层为骨架：控件与信号已按 FR-6/FR-7 搭好，但未在真实硬件上做过联调；
 - SHT31 / AM2302 依赖 `smbus2` / `w1thermsensor`，需在目标机安装；
-- TC-7（拔插串口）、TC-8（干净 Windows 虚拟机）需要实机验证。
+- TC-7（拔插串口）、TC-8（干净 Windows 虚拟机）需要实机验证；
+- `.github/workflows/ci.yml` 因 GitHub App 权限范围限制未能写入仓库，
+  等价检查已以 `scripts/check_layering.sh` 提供，可自行接入 CI。
 
 ## 许可
 
